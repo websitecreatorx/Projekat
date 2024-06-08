@@ -3,7 +3,7 @@ const wrapperslider = document.getElementById('news-slider');
 function scrollWrapperSlider(){
     const scrollAmount = amount;
     wrapperslider.scrollBy(scrollAmount, 0);   
-    if(wrapperslider.scrollLeft + wrapperslider.clientWidth >= wrapperslider.scrollWidth){
+    if(wrapperslider.scrollLeft + wrapperslider.clientWidth >= wrapperslider.scrollWidth - 2){
         clearInterval(timer);
         setTimeout(scrollBackWrapperSlider, 0);
     }
