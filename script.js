@@ -24,7 +24,7 @@ var timer = setInterval(scrollWrapperSlider, 7000);
 let amount;
 
 if(window.innerWidth < 900){
-    amount = (wrapperslider.scrollWidth - wrapperslider.clientWidth ) / 4 + 2;
+    amount = (wrapperslider.scrollWidth - wrapperslider.clientWidth ) / 4;
 }else{
     amount = (wrapperslider.scrollWidth - wrapperslider.clientWidth ) / 2 + 1;
 }
