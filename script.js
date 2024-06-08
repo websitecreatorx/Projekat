@@ -1,9 +1,9 @@
 const wrapperslider = document.getElementById('news-slider');
 
 function scrollWrapperSlider(){
-    const scrollAmount = 260;
+    const scrollAmount = amount;
     wrapperslider.scrollBy(scrollAmount, 0);   
-    if(wrapperslider.scrollLeft == 508){
+    if(wrapperslider.scrollLeft + wrapperslider.clientWidth >= wrapperslider.scrollWidth){
         clearInterval(timer);
         setTimeout(scrollBackWrapperSlider, 0);
     }
@@ -20,3 +20,11 @@ wrapperslider.addEventListener('onload', scrollBackWrapperSlider());
 wrapperslider.addEventListener('onload', timer);
 
 var timer = setInterval(scrollWrapperSlider, 7000);
+
+let amount;
+
+if(window.innerWidth < 900){
+    amount = (wrapperslider.scrollWidth - wrapperslider.clientWidth ) / 4;
+}else{
+    amount = (wrapperslider.scrollWidth - wrapperslider.clientWidth ) / 2 + 1;
+}
