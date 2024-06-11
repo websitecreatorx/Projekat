@@ -24,7 +24,7 @@ html{
 .header-container > img{
     display: block;
     margin: auto;
-    max-height: 200px;
+    height: 15%;
     margin-top: 7.5%;
 }
 
