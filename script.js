@@ -60,5 +60,7 @@ let PartnersAmount;
 
 if(window.innerWidth >= 1920){
     PartnersAmount = 1806;
+}else if(window.innerWidth < 1920){
+    PartnersAmount = 452.25;
 }
 

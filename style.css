@@ -10,7 +10,7 @@ html{
 /*  Header  */
 
 .header-container{
-    height: 100vh;
+    height: 100dvh;
     background-image: url(Images/libraryHeaderBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -376,9 +376,6 @@ html{
     .background-element-gallery-1{
         display: none;
     }
-    .partners-title > .col-md-6{
-        display: none;
-    }
     .gallery-image-div{
         display: grid;
     }
@@ -386,5 +383,20 @@ html{
         width: 75vw;
         height: 100%;
         border-radius: 20px;
+    }
+}
+
+@media (max-width: 1919px){
+    .partners-title > .col-md-6{
+        display: none;
+    }
+    .partners-image-slider-wrapper{
+        width: 230px;
+    }
+    .partners-title > .col-md-4 > h1{
+        width: fit-content;
+    }
+    .partners-title > .col-md-4{
+        width: fit-content;
     }
 }
