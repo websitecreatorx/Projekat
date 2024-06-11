@@ -10,7 +10,7 @@ html{
 /*  Header  */
 
 .header-container{
-    height: 100dvh;
+    height: 100vh;
     background-image: url(Images/libraryHeaderBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
