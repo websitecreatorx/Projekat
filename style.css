@@ -1,5 +1,6 @@
-html{
+html, body{
     overflow-x: hidden;
+    height: 100%;
 }
 
 *{
@@ -297,7 +298,7 @@ html{
 }  
 
 .partners-image-slider-wrapper{
-    padding-top: 60px;
+    padding-block: 60px;
     margin: auto;
     height: fit-content;
     overflow-x: hidden;
@@ -308,7 +309,7 @@ html{
     display: flex;
     justify-content: center;
     width: fit-content;
-    gap: 221.5px;
+    gap: 200px;
 }
 
 .partners-image-card{
@@ -323,9 +324,122 @@ html{
     margin: auto;
 }
 
+.partners-slider-button-wrapper{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 100px;
+}
+
+.partners-slider-button{
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-color: #E4E7EC;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.active-partners-slider-button{
+    width: 60px;
+    background-color: #3E4095;
+}
+
+/*  Footer  */
+
+.footer{
+    background-color: #3E4095;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    justify-content: center;
+}
+
+.footer-div{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+.footer-title-afewwords{
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+}
+
+.footer-text-afewwords{
+    font-size: 20px;
+    color: white;
+    max-width: 525px;
+    max-height: 450px;
+    margin-bottom: 0;
+    padding-top: 20px;
+    padding-right: 140px;
+}
+
+.footer-title-links{
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+}
+
+.footer-list-links{
+    list-style: none;
+    padding-left: 0;
+    padding-top: 20px;
+}
+
+.footer-list-links > li > a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.footer-title-mail{
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+}
+
+#fname{
+    margin-top: 20px;
+    padding-left: 20px;
+    border-radius: 16px;
+    border: 0;
+    height: 45px;
+    width: 400px;
+}
+
+#msg{
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-left: 20px;
+    border-radius: 16px;
+    border: 0px;
+    width: 400px;
+    resize: none;
+}
+
+.footer-mail-button{
+    margin-top: 20px;
+    width: 400px;
+    height: 50px;
+    border-radius: 16px;
+    background-color: #4A4CAC;
+    border: 0;
+    color: white;
+}
+
+.footer-mail-button > p{
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 16px;
+}
 
 
-/*  Media & Icons  */
+/*  Icons  */
 
 .clarity-language-solid{
     display: inline-block;
@@ -341,11 +455,78 @@ html{
     mask-size: 100% 100%;
   }
 
+/*  Media (Sorted By Device Width)  */
+
+/*  Max Width Media*/
+
+@media (max-width: 1919px){
+    .partners-slider-button-wrapper{
+        display: none;
+    }
+}
+
 @media (max-width: 1700px){
     .header-buttons{
        position: initial;
        padding-left: 0px;
        justify-content: center;
+    }
+}
+
+@media (max-width: 1280px){
+    .footer-div{
+        display: grid;
+    }
+    .footer-afewwords{
+        text-align: center;
+        margin: auto;
+        width: 62vw;
+    }
+    .footer-text-afewwords{
+        max-height: 100%;
+        width: 100%;
+        text-align: center;
+        padding-right: 0;
+        margin: auto;
+    }
+    .footer-title-links{
+        text-align: center;
+        margin-top: 40px;
+    }
+    .footer-list-links{
+        text-align: center;
+    }
+    .footer-title-mail{
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 0px;
+    }
+    .footer-form-mail{
+        text-align: center;
+    }
+    #fname{
+        width: 100%;
+    }
+    #msg{
+        width: 100%;
+    }
+    .footer-mail-button{
+        width: 360px;
+    }
+}
+
+@media (max-width: 960px){
+    .partners-title > .col-md-6{
+        display: none;
+    }
+    .partners-image-slider-wrapper{
+        width: 230px;
+    }
+    .partners-title > .col-md-4 > h1{
+        width: fit-content;
+    }
+    .partners-title > .col-md-4{
+        width: fit-content;
     }
 }
 
@@ -386,17 +567,27 @@ html{
     }
 }
 
-@media (max-width: 1919px){
-    .partners-title > .col-md-6{
-        display: none;
-    }
+/*  Min And Max Width Media*/
+
+@media (max-width: 1919px) and (min-width: 961px){
     .partners-image-slider-wrapper{
-        width: 230px;
-    }
-    .partners-title > .col-md-4 > h1{
-        width: fit-content;
-    }
-    .partners-title > .col-md-4{
-        width: fit-content;
+        width: 690px;
     }
 }
+
+@media (min-width: 768px) and (max-width: 1280px){
+    .footer-links{
+        width: 50%;
+        margin: auto;
+    }
+    .footer-mail{
+        width: max-content;
+        margin: auto;
+    }
+    .footer-mail-button{
+        max-width: 360px;
+        min-width: 360px;
+        width: 100%;
+    }
+}
+
