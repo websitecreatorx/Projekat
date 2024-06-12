@@ -430,14 +430,9 @@ html, body{
     background-color: #4A4CAC;
     border: 0;
     color: white;
-}
-
-.footer-mail-button > p{
-    margin-bottom: 0;
     font-weight: 600;
     font-size: 16px;
 }
-
 
 /*  Icons  */
 
