@@ -103,6 +103,7 @@ html, body{
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 22px;
     border-bottom: none;
+    padding-bottom: 10px;
 }
 
 .header-container .hidden-button-border{
