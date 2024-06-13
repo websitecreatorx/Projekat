@@ -139,12 +139,110 @@ if(window.innerWidth >= 1920){
 }
 
 //  APIs
+// News API
+const NewsImages = document.getElementsByClassName('news-image');
 
-let url ='http://139.59.147.167:8085/gallery'
-let options = {
+
+let NewsUrl ='http://139.59.147.167:8085/api/posts';
+let NewsImageUrl = 'http://139.59.147.167:8085/storage/';
+let NewsOptions = {
     method: "GET"
 }
 
-fetch(url, options)
+fetch(NewsUrl, NewsOptions)
 .then(response => response.json())
-.then(json => response)
+.then(json => {
+    for (let i = 0; i < json.length; i++){
+        const NewsImageParentDiv = document.getElementById('news-image-parent');
+        const NewsImageChildDiv = document.createElement('div');
+        const NewsImageInDiv = document.createElement('img');
+        const NewsImageTitle = document.createElement('p');
+
+
+        NewsImageTitle.classList.add('news-image-description');
+        NewsImageInDiv.classList.add('news-image');
+        NewsImageChildDiv.classList.add('news-image-card');
+
+        const NewsImagesDescription = document.getElementsByClassName('news-image-description');
+
+        NewsImageInDiv.setAttribute('src', NewsImages.src = NewsImageUrl + json[i].attachment);
+
+        NewsImageParentDiv.appendChild(NewsImageChildDiv);
+        NewsImageChildDiv.appendChild(NewsImageInDiv);
+        NewsImageChildDiv.appendChild(NewsImageTitle);
+
+        NewsImagesDescription[i].innerHTML = json[i].title; 
+    }
+})
+
+
+        
+
+// Gallery API
+
+const GalleryImages = document.getElementsByClassName('gallery-image');
+const GalleryImageParentDiv = document.getElementById('gallery-image-parent-div');
+
+let GalleryUrl ='http://139.59.147.167:8085/api/gallery';
+let GalleryImageUrl = 'http://139.59.147.167:8085/storage/';
+let GalleryOptions = {
+    method: "GET"
+}
+
+fetch(GalleryUrl, GalleryOptions)
+.then(response => response.json())
+.then(json => {
+    for (let i = 0; i < json.length; i++){
+        const GalleryImageChildDiv = document.createElement('div');
+        const GalleryImageChildDiv1 = document.createElement('div')
+        const GalleryImageInDiv = document.createElement('img');
+
+        GalleryImageInDiv.classList.add('gallery-image')
+        GalleryImageChildDiv.classList.add('col-md-5');
+        GalleryImageChildDiv.classList.add('gallery-image-row');
+        GalleryImageChildDiv1.classList.add('col-md-4');
+        GalleryImageChildDiv1.classList.add('gallery-image-row');
+        
+        if((i+2)%3 == 0 || i == 2){
+            GalleryImageParentDiv.appendChild(GalleryImageChildDiv1);
+            GalleryImageChildDiv1.appendChild(GalleryImageInDiv);
+        }else{
+            GalleryImageParentDiv.appendChild(GalleryImageChildDiv);
+            GalleryImageChildDiv.appendChild(GalleryImageInDiv);
+        }
+        GalleryImageInDiv.setAttribute('src', GalleryImages.src = GalleryImageUrl + json[i].attachment);
+    } 
+})
+
+// Partners API
+
+const PartnersImages = document.getElementsByClassName('partners-image');
+
+let PartnersUrl ='http://139.59.147.167:8085/api/partners';
+let PartnersImageUrl = 'http://139.59.147.167:8085/storage/';
+let PartnersOptions = {
+    method: "GET"
+}
+
+fetch(PartnersUrl, PartnersOptions)
+.then(response => response.json())
+.then(json => {
+    console.log(json)
+    for (let i = 0; i < json.length; i++){
+        PartnersImageParentDiv = document.getElementById('partners-image-slider-div');
+        PartnersImageChildDiv = document.createElement('div');
+        PartnersImageInDiv = document.createElement('img');
+
+        PartnersImageChildDiv.classList.add('partners-image-card');
+        PartnersImageChildDiv.classList.add('col-md-2');
+        PartnersImageInDiv.classList.add('partners-image');
+
+        PartnersImageParentDiv.appendChild(PartnersImageChildDiv);
+        PartnersImageChildDiv.appendChild(PartnersImageInDiv);
+
+        PartnersImageInDiv.setAttribute('src', PartnersImages.src = PartnersImageUrl + json[i].logo);
+    } 
+})
+
+
+
