@@ -91,63 +91,40 @@ function scrollBackPartnersWrapperSlider(){
 
 function firstTimeScrollPartnersSlider(){
     if(PartnersWrapperSlider.scrollLeft > 0){
+        clearInterval(PartnersInterval);
         PartnersInterval = setInterval(scrollPartnersWrapperSlider, 7000);  
     }
 }
 
-function addClassToActivePartnersButton_0(){
+function addClassToActivePartnersButton(buttonIndex) {
     clearTimeout(PartnersTimeout);
     clearInterval(PartnersInterval);
-    PartnersButtonCounter = 0;
-    PartnersWrapperSlider.scrollLeft = 0;
-    PartnersSliderButton[0].classList.add('active-partners-slider-button');
-    PartnersSliderButton[1].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[2].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[3].classList.remove('active-partners-slider-button');
-    PartnersInterval = setInterval(scrollPartnersWrapperSlider, 7000);
-}
-
-function addClassToActivePartnersButton_1(){
-    clearTimeout(PartnersTimeout);
-    clearInterval(PartnersInterval);
-    PartnersButtonCounter = 1;
-    PartnersWrapperSlider.scrollLeft = PartnersAmount;
-    PartnersSliderButton[0].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[1].classList.add('active-partners-slider-button');
-    PartnersSliderButton[2].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[3].classList.remove('active-partners-slider-button');
-    PartnersInterval = setInterval(scrollPartnersWrapperSlider, 7000);
-}
-
-function addClassToActivePartnersButton_2(){
-    clearTimeout(PartnersTimeout);
-    clearInterval(PartnersInterval);
-    PartnersButtonCounter = 2;
-    PartnersWrapperSlider.scrollLeft = PartnersAmount*2;
-    PartnersSliderButton[0].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[1].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[2].classList.add('active-partners-slider-button');
-    PartnersSliderButton[3].classList.remove('active-partners-slider-button');
-    PartnersInterval = setInterval(scrollPartnersWrapperSlider, 7000);
-}
-
-function addClassToActivePartnersButton_3(){
-    clearTimeout(PartnersTimeout);
-    PartnersButtonCounter = 3;
-    PartnersWrapperSlider.scrollLeft = PartnersAmount*3;
-    PartnersSliderButton[0].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[1].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[2].classList.remove('active-partners-slider-button');
-    PartnersSliderButton[3].classList.add('active-partners-slider-button');
-    PartnersTimeout = setTimeout(scrollBackPartnersWrapperSlider, 7000);
-}
+    PartnersButtonCounter = buttonIndex;
+    PartnersWrapperSlider.scrollLeft = PartnersAmount * buttonIndex;
+  
+    for (let i = 0; i < PartnersSliderButton.length; i++) {
+        const button = PartnersSliderButton[i];
+        button.classList.remove('active-partners-slider-button');
+        if (i === buttonIndex) {
+          button.classList.add('active-partners-slider-button');
+        }
+      }
+  
+    if (buttonIndex === 3) {
+      PartnersTimeout = setTimeout(scrollBackPartnersWrapperSlider, 7000);
+      clearInterval(PartnersInterval);
+    } else {
+      PartnersInterval = setInterval(scrollPartnersWrapperSlider, 7000);
+      clearTimeout(PartnersTimeout);
+    }
+  }
 
 //  Event Listeners
 
-PartnersSliderButtonNumber_0.addEventListener('click', addClassToActivePartnersButton_0);
-PartnersSliderButtonNumber_1.addEventListener('click', addClassToActivePartnersButton_1);
-PartnersSliderButtonNumber_2.addEventListener('click', addClassToActivePartnersButton_2);
-PartnersSliderButtonNumber_3.addEventListener('click', addClassToActivePartnersButton_3);
+PartnersSliderButtonNumber_0.addEventListener('click', () => addClassToActivePartnersButton(0));
+PartnersSliderButtonNumber_1.addEventListener('click', () => addClassToActivePartnersButton(1));
+PartnersSliderButtonNumber_2.addEventListener('click', () => addClassToActivePartnersButton(2));
+PartnersSliderButtonNumber_3.addEventListener('click', () => addClassToActivePartnersButton(3));
 PartnersWrapperSlider.addEventListener('onload', scrollBackPartnersWrapperSlider());
 PartnersWrapperSlider.addEventListener('onload', firstTimeScrollPartnersSlider());
 
@@ -161,3 +138,13 @@ if(window.innerWidth >= 1920){
     PartnersAmount = 430; 
 }
 
+//  APIs
+
+let url ='http://139.59.147.167:8085/gallery'
+let options = {
+    method: "GET"
+}
+
+fetch(url, options)
+.then(response => response.json())
+.then(json => response)
